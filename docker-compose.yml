@@ -7,6 +7,9 @@ services:
         container_name: dhis2-postgres
         env_file:
             - db.env
+        volumes:
+            - ./database_schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
+            - ./db_data.sql:/docker-entrypoint-initdb.d/db_data.sql
         networks:
             - postgres-database
 
